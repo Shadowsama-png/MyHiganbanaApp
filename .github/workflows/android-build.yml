@@ -3,11 +3,12 @@ name: Android APK Build
 on:
   push:
     branches:
-      - main
+      - main  # Ana branch adını buraya yaz (örneğin master)
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -22,7 +23,7 @@ jobs:
       run: ./gradlew assembleRelease
 
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: app-release.apk
         path: app/build/outputs/apk/release/app-release.apk
